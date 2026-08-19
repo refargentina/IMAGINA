@@ -237,6 +237,12 @@ a { transition: color .18s ease, background .18s ease, border-color .18s ease; }
    fecha pasa arriba y el resumen ocupa el ancho completo. */
 @media (max-width: 820px) {
   .bloque { grid-template-columns: minmax(0, 1fr) !important; gap: 18px !important; }
+  /* Apilado en una sola columna el eje quedaba ENCIMA del texto: la fecha y el
+     resumen arrancan los dos en x=0 y la linea les pasaba por arriba. En celular
+     se retiran el eje y el nodo; el codigo de color lo sigue llevando el icono
+     de modalidad (pin azul / pantalla violeta), que ya esta ahi. Sin el nodo el
+     gap del flex no aplica, asi que todo alinea contra el margen. */
+  .bloque::before, .hito { display: none !important; }
 }
 @keyframes ap-spin { to { transform: rotate(360deg) } }
 .is-sending { opacity: .75; pointer-events: none; }
